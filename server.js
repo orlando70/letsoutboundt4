@@ -14,7 +14,7 @@ const { sendRegistrationCode, sendOutboundEmailNotFound, sendOutboundEmailDataNo
 const cron = require('node-cron')
 global.cronJobs = {}
 const emailSender = require('./modules/outboundEngine');
-
+const path= require('path')
 
 
 const app = express();
@@ -407,6 +407,12 @@ app.post("/deleteEmail", async (req, res) => {
 
 
 
+app.use(express.static(path.join(__dirname, "letsoutbound/build")))
+app.get("*", (req, res)=>{
+    res.sendFile(
+        path.join(__dirname,"letsoutbound/build/index.html")
+    )
+})
 
 
 
