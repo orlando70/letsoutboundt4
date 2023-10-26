@@ -9,7 +9,7 @@ const userModel = require('./models/userSchema');
 const emailModel = require('./models/emailSchema')
 const outBoundModel = require('./models/outboundSchema');
 const taskModel = require('./models/taskSchema')
-const port = process.env.PORT;
+const port = process.env.PORT||3000;
 const { sendRegistrationCode, sendOutboundEmailNotFound, sendOutboundEmailDataNotFound } = require('./modules/emailSender')
 const cron = require('node-cron')
 global.cronJobs = {}
@@ -255,7 +255,7 @@ app.post("/register", async (req, res) => {
     }
     catch (error) {
         res.status(400).json(error.message);
-    }
+    } 
 })
 //login
 app.post("/login", async (req, res) => {
