@@ -409,12 +409,12 @@ app.post("/deleteEmail", async (req, res) => {
 
 
 
-app.use(express.static(path.join(__dirname, "letsoutbound/build")))
+app.use(express.static(path.join(__dirname, "client/build")))
 console.log( "__dirnames is: "+__dirname)
 
 app.get("*", (req, res)=>{
     res.sendFile(
-        path.join(__dirname,"letsoutbound/build/index.html")
+        path.join(__dirname,"client/build/index.html")
     )
 })
 
