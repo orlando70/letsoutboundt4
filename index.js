@@ -23,6 +23,8 @@ app.use(bodyParser.json())
 
 //set up cron jobs
 
+// const __dirname = path.resolve();
+
 function setupCronJob(taskName, schedule, taskFunction) {
     global.cronJobs[taskName] = cron.schedule(schedule, taskFunction);
 }
@@ -408,6 +410,8 @@ app.post("/deleteEmail", async (req, res) => {
 
 
 app.use(express.static(path.join(__dirname, "letsoutbound/build")))
+console.log( "__dirnames is: "+__dirname)
+
 app.get("*", (req, res)=>{
     res.sendFile(
         path.join(__dirname,"letsoutbound/build/index.html")
@@ -419,7 +423,7 @@ app.get("*", (req, res)=>{
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-        app.listen(process.env.PORT, () => {
+        app.listen(port, () => {
             console.log("Connected to port " + port + " and Database")
         })
     })
