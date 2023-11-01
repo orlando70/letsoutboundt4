@@ -375,11 +375,6 @@ app.post("/deleteEmail", async (req, res) => {
         console.error("Error deleting documents from emailModel:", err);
     }
 
-
-
-
-
-
 })
 
 

@@ -6,8 +6,8 @@ const { regCodeEmailContent, outboundEmailNotFoundContent, outboundEmailDataNotF
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "me.sparkycash@gmail.com",
-        pass: "edcuphwvfujhytjw"
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASS,
     }
 })
 
