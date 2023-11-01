@@ -26,9 +26,8 @@ app.use(bodyParser.json())
 // const __dirname = path.resolve();
 
 function setupCronJob(taskName, schedule, taskFunction) {
-    console.log('starting cron...')
     global.cronJobs[taskName] = cron.schedule(schedule, taskFunction);
-    console.log('task registration complete...')
+    global.cronJobs[taskName].start()
 }
 
 
@@ -201,8 +200,6 @@ app.post("/registertask", async (req, res) => {
 
 
 
-
-        console.log('task registration ongoing...')
 
         setupCronJob(taskName, cronSchedule, taskFunction)
         //console.log("current jobs =" + (cronJobs))
