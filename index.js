@@ -26,7 +26,9 @@ app.use(bodyParser.json())
 // const __dirname = path.resolve();
 
 function setupCronJob(taskName, schedule, taskFunction) {
+    console.log('starting cron...')
     global.cronJobs[taskName] = cron.schedule(schedule, taskFunction);
+    console.log('task registration complete...')
 }
 
 
@@ -135,6 +137,7 @@ app.post("/registertask", async (req, res) => {
 
 
         function taskFunction() {
+            console.log('Im in task function')
             
             const thisUserRegisteredEmails = []
             //get all user registed email list
@@ -199,6 +202,7 @@ app.post("/registertask", async (req, res) => {
 
 
 
+        console.log('task registration ongoing...')
 
         setupCronJob(taskName, cronSchedule, taskFunction)
         //console.log("current jobs =" + (cronJobs))
